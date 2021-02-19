@@ -31,7 +31,7 @@ public class NBody{
 		double radius = readRadius(filename);
 		int waitTimeMilliseconds = 10;
 		StdDraw.enableDoubleBuffering();
-		for(double time = 0; time < T; time++){
+		for(double time = 0; time < T; time+=dt){
 			double[] xForces = new double[planets.length];
 			double[] yForces = new double[planets.length];
 			for(int i = 0; i < planets.length; i++){
@@ -50,7 +50,7 @@ public class NBody{
     		StdOut.printf("%11.4e %11.4e %11.4e %11.4e %11.4e %12s\n",
             planets[i].xxPos, planets[i].yyPos, planets[i].xxVel,
             planets[i].yyVel, planets[i].mass, planets[i].imgFileName);   
-}
+		}
 	}
 
 	private static void drawBackground(double radius){
