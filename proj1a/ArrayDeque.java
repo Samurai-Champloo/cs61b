@@ -77,7 +77,10 @@ public class ArrayDeque<T> {
             downSize();
         }
         nextFirst = plusOne(nextFirst);
-        size--;
+        if (!isEmpty()) {
+            size--;
+        }
+
         return items[nextFirst];
     }
 
@@ -86,24 +89,26 @@ public class ArrayDeque<T> {
             downSize();
         }
         nextLast = minusOne(nextLast);
-        size--;
+        if (!isEmpty()) {
+            size--;
+        }
+
         return items[nextLast];
     }
 
     public void printDeque() {
-        int head = plusOne(nextFirst);
-        int tail = minusOne(nextLast);
-        for (int i = head; i != tail; i = plusOne(i)) {
+        for (int i = plusOne(nextFirst); i != nextLast; i = plusOne(i)) {
             System.out.print(items[i] + " ");
         }
+        System.out.println();
     }
 
     public T get(int index) {
-        int resIndex = plusOne(nextFirst);
-        for (int i = 0; i < index; i++) {
-            resIndex = plusOne(resIndex);
+        if(index >= size){
+            return null;
         }
-        return items[resIndex];
+        int start = plusOne(nextFirst);
+        return items[(start + index) % items.length];
     }
 
 }
