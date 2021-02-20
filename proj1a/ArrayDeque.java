@@ -18,7 +18,7 @@ public class ArrayDeque<T> {
     private boolean isSparse() {
         return items.length >= 16 && size < (items.length / 4);
     }
-    
+
     private int minusOne(int index) {
         return (index - 1 + items.length) % items.length;
     }
