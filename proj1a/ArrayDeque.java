@@ -16,9 +16,9 @@ public class ArrayDeque<T> {
     }
 
     private boolean isSparse() {
-        return size < (items.length / 4);
+        return items.length >= 16 && size < (items.length / 4);
     }
-
+    
     private int minusOne(int index) {
         return (index - 1 + items.length) % items.length;
     }
@@ -51,7 +51,7 @@ public class ArrayDeque<T> {
         }
         items = newDeque;
         nextFirst = capacity - 1;
-        nextLast = nextLast + 1;
+        nextLast = size;
     }
 
     public void addFirst(T item) {
@@ -64,8 +64,8 @@ public class ArrayDeque<T> {
     }
 
     public void addLast(T item) {
-        if (size == items.length) {
-            resize(size * 2);
+        if (isFull()) {
+            upSize();
         }
         items[nextLast] = item;
         nextLast = plusOne(nextLast);
@@ -104,7 +104,7 @@ public class ArrayDeque<T> {
     }
 
     public T get(int index) {
-        if(index >= size){
+        if (index >= size) {
             return null;
         }
         int start = plusOne(nextFirst);
