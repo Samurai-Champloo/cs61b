@@ -12,12 +12,4 @@ public class TestOffByN {
         assertTrue(offByFive.equalChars('c', 'h'));
         assertTrue(offByFive.equalChars('q', 'v'));
     }
-
-    @Test
-    public void testIsPalindrome() {
-        assertTrue(offByFive.isPalindrome("acqmvhf"));
-        assertFalse(offByFive.isPalindrome("racecar"));
-        assertTrue(offByFive.isPalindrome("a"));
-        assertTrue(offByFive.isPalindrome(""));
-    }
 }

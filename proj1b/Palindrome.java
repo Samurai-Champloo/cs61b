@@ -28,7 +28,18 @@ public class Palindrome {
 
     public boolean isPalindrome(String word, CharacterComparator cc) {
         OffByOne offByOne = (OffByOne) cc;
-        return offByOne.isPalindrome(word);
+        LinkedListDeque<Character> deque = (LinkedListDeque<Character>) wordToDeque(word);
+        while (deque.size() != 0) {
+            if (deque.size() == 0 || deque.size() == 1) {
+                return true;
+            }
+            char head = deque.removeFirst();
+            char tail = deque.removeLast();
+            if (!offByOne.equalChars(head, tail)) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }
