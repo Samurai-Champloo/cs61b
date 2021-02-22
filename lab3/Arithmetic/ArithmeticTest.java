@@ -11,7 +11,6 @@ public class ArithmeticTest {
         assertEquals(expected, actual).
         if it is false, then the assertion will be false, and this test will fail.
         */
-
         assertEquals(30, Arithmetic.product(5, 6));
         assertEquals(-30, Arithmetic.product(5, -6));
         assertEquals(0, Arithmetic.product(0, -6));
@@ -21,7 +20,6 @@ public class ArithmeticTest {
 
     @Test 
     public void testSum() {
-
         assertEquals(11, Arithmetic.sum(5, 6));
         assertEquals(-1, Arithmetic.sum(5, -6));
         assertEquals(-6, Arithmetic.sum(0, -6));
